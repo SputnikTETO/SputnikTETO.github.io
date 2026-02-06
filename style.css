@@ -1,5 +1,8 @@
-<link href="https://fonts.googleapis.com/css?family=Schoolbell&v1" rel="stylesheet">
 
 .h1, .p {
-  font-family: 'Schoolbell', arial, serif; 
+  font-family: "Dancing Script", cursive;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+
 }
