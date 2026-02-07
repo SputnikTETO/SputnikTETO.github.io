@@ -11,11 +11,20 @@
 * {
     background-color: aliceblue;
 }
-h1 {
+h1, p, h2 {
     color: rgb(0, 49, 91);
 }
-p {
-    color: rgb(0, 49, 91);
+#img1 {
+max-width: 50%;
+height: auto;
+}
+#img2 {
+max-width: 44.7%;
+height: auto;
+}
+#div1{
+    height: 430px;
+    width: auto;
 }
 button {
     border: none;
