@@ -26,6 +26,10 @@ height: auto;
     height: 430px;
     width: auto;
 }
+#div2{
+    height: 430px;
+    width: 430px;
+}
 button {
     border: none;
     color: rgb(0, 100, 188);
