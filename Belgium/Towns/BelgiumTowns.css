@@ -1,0 +1,28 @@
+#description{
+    height: auto;
+    width: 60vw;
+    margin: 0;
+    float: left;
+}
+#context{
+    height: auto;
+    width: 30vw;
+    float: right;
+    margin: 0;
+}
+#mainimg{
+    width: 100%;
+}
+#container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+#imgcaption {
+  margin-top: 0px;
+  padding: 6px 10px;
+  background-color: #f2f2f2; /* light grey box */
+  font-size: 0.9rem;
+  color: #333;
+  width: fit-content; /* keeps the box tight around the text */
+}
