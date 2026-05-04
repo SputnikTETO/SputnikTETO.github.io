@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Root pages -->
+  <url><loc>https://vier.ink/</loc></url>
+  <url><loc>https://vier.ink/french.html</loc></url>
+  <url><loc>https://vier.ink/places.html</loc></url>
+
+  <!-- French folder -->
+  <url><loc>https://vier.ink/French/EtreVerbs.html</loc></url>
+  <url><loc>https://vier.ink/French/Links.html</loc></url>
+
+  <!-- Belgium folder -->
+  <url><loc>https://vier.ink/Belgium/Towns.html</loc></url>
+  <url><loc>https://vier.ink/Belgium/Towns/bruly-de-pesche.html</loc></url>
+  <url><loc>https://vier.ink/Belgium/Towns/gros-fays.html</loc></url>
+
+  <!-- places folder -->
+  <url><loc>https://vier.ink/places/mons.html</loc></url>
+  
+</urlset>
