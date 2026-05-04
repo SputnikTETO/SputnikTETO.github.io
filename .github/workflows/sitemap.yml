@@ -19,3 +19,6 @@ jobs:
         uses: cicirello/generate-sitemap@v1.10.4
         with:
           base-url-path: https://vier.ink/
+          path-to-root: .
+          include-html: true
+          include-pdf: true
