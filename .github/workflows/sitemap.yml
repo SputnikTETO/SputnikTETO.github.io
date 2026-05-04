@@ -15,4 +15,4 @@ jobs:
       - name: generate-sitemap
         uses: cicirello/generate-sitemap@v1.9.2
         with:
-          base-url-path: https://vier.ink/
+          base-url-path: https://SputnikTETO.github.io/
