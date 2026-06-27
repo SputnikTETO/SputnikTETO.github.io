@@ -9,10 +9,10 @@
     padding-left: 5%;
 }
 * {
-    background-color: aliceblue;
+    background-color: #494D5F;
 }
 h1, p, h2, h3 {
-    color: rgb(0, 49, 91);
+    color: #e5eaf5;
 }
 #img1 {
 max-width: 50%;
