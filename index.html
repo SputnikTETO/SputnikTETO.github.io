@@ -21,7 +21,7 @@
 <body>
    <h1>[SputnikTeto]</h1>
    <p>{ Jusqu'ici, tout va bien }</p>
-<audio controls autoplay>
+<audio controls autoplay id="myAudio>
   <source src="bg.mp3" type="audio/mpeg" loop>
 </audio>
 </body>
@@ -29,7 +29,7 @@
    function changePage(link){
     window.location.href = "https://vier.ink/" +  link;
       var x = document.getElementById("myAudio");
-
+      playAudio()
    function playAudio() {
   x.play();
 }
