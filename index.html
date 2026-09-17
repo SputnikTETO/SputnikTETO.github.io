@@ -145,14 +145,26 @@
 
    <div class="visualizer-container"></div>
 
-   <audio id='bgMusic' src="m.mp3" loop></audio>
+   <audio id='bgMusic' loop></audio>
 
 </body>
 <script>
    function changePage(link){
     window.location.href = "https://vier.ink/" +  link;
    }
+
+   // ---- Song list: add new songs here, just the filename ----
+   const SONGS = [
+      "k.mp3",
+      "m.mp3",
+      "f.mp3"
+   ];
+
    const music = document.getElementById('bgMusic');
+
+   // Pick a random song for this page load
+   const chosenSong = SONGS[Math.floor(Math.random() * SONGS.length)];
+   music.src = chosenSong;
 
   const clickPrompt = document.getElementById('clickPrompt');
 
