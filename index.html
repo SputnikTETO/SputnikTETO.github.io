@@ -73,7 +73,7 @@
 <body>
    <h1>[SputnikTeto]</h1>
    <p>{ Jusqu'ici, tout va bien }</p>
-   <audio id="bgMusic" src="k.mp3" loop></audio>
+   <audio id="bgMusic" src="k.mp3" controls loop></audio>
    <div class="background"></div>
    <div class="track-title">Awesome song</div>
    <div class="visualizer-container"></div>
@@ -82,7 +82,7 @@
    function changePage(link){
     window.location.href = "https://vier.ink/" +  link;
    }
-   const music = document.getElementById('bgMusic');
+   /*const music = document.getElementById('bgMusic');
 
   function startMusic() {
     music.play().catch(err => console.log('Playback blocked:', err));
@@ -90,7 +90,7 @@
   }
 
   document.addEventListener('click', startMusic);
-
+*/
     (function () {
 
         // The number of bars that should be displayed
