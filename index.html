@@ -106,10 +106,34 @@
             z-index: 2;
         }
 
+        .click-prompt {
+            position: absolute;
+
+            top: 20px;
+            left: 0;
+            right: 0;
+
+            color: #6d0f2b;
+            font-family: "Courier new", monospace;
+            font-size: 0.9em;
+            text-align: center;
+
+            z-index: 3;
+
+            transition: opacity 0.3s ease;
+        }
+
+        .click-prompt.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
    </style>
 </head>
 <body>
    <div class="background"></div>
+
+   <p class="click-prompt" id="clickPrompt">click to activate music</p>
 
    <div class="track-title">
       <div>
@@ -120,7 +144,7 @@
 
    <div class="visualizer-container"></div>
 
-   <audio id='bgMusic' src="k.mp3" controls></audio>
+   <audio id='bgMusic' src="k.mp3" loop></audio>
 
 </body>
 <script>
@@ -129,8 +153,13 @@
    }
    const music = document.getElementById('bgMusic');
 
+  const clickPrompt = document.getElementById('clickPrompt');
+
   function startMusic() {
     music.play().catch(err => console.log('Playback blocked:', err));
+    if (clickPrompt) {
+        clickPrompt.classList.add('hidden');
+    }
     document.removeEventListener('click', startMusic);
   }
 
