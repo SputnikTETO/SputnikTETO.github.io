@@ -21,20 +21,19 @@
 <body>
    <h1>[SputnikTeto]</h1>
    <p>{ Jusqu'ici, tout va bien }</p>
-<audio controls autoplay id="myAudio">
-  <source src="bg.mp3" type="audio/mpeg" loop>
-</audio>
+   <audio id="bgMusic" src="bg.mp3" loop></audio>
 </body>
 <script>
    function changePage(link){
     window.location.href = "https://vier.ink/" +  link;
    }
-      var x = document.getElementById("myAudio");
-      x.play();
-   x.play();
-   x.play();
-   x.play();
-   x.play();
-   x.play();
+   const music = document.getElementById('bgMusic');
+
+  function startMusic() {
+    music.play().catch(err => console.log('Playback blocked:', err));
+    document.removeEventListener('click', startMusic);
+  }
+
+  document.addEventListener('click', startMusic);
 </script>
 </html>
