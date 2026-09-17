@@ -16,12 +16,100 @@
       button {
          font-family: "Caveat", cursive;
       }
+      
+        body {
+            overflow: hidden;
+            margin: 0;
+        }
+
+        .background {
+            position: absolute;
+
+            top: -50px;
+            right: -50px;
+            bottom: -50px;
+            left: -50px;
+
+            background-position: center center;
+            background-size: cover;
+
+            filter: blur(15px);
+
+            z-index: 0;
+
+        }
+
+        .track-title {
+
+            position: absolute;
+
+            top: 0;
+            bottom: 0;
+            right: 0;
+            width: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 40px;
+            box-sizing: border-box;
+
+            color: white;
+            font-family: Calibri;
+            font-size: 60px;
+            text-align: center;
+
+            z-index: 1;
+
+        }
+
+        .visualizer-container {
+            position: absolute;
+
+            top: 0;
+            bottom: 0;
+            left: 0;
+            width: 50%;
+
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            gap: 12px;
+
+            z-index: 1;
+        }
+
+        .visualizer-container__bar {
+
+            background: white;
+            width: 40px;
+
+        }
+
+        audio {
+            position: absolute;
+
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+
+            z-index: 2;
+        }
+
    </style>
 </head>
 <body>
    <h1>[SputnikTeto]</h1>
    <p>{ Jusqu'ici, tout va bien }</p>
-   <audio id="bgMusic" src="k.mp3" loop></audio>
+   <div class="background"></div>
+
+<div class="track-title">Awesome song</div>
+
+<div class="visualizer-container"></div>
+
+<audio id='bgMusic' src="k.mp3" controls></audio>
+
 </body>
 <script>
    function changePage(link){
@@ -35,6 +123,86 @@
   }
 
   document.addEventListener('click', startMusic);
+    (function () {
+
+        // The number of bars that should be displayed
+        const NBR_OF_BARS = 8;
+
+        // Get the audio element tag
+        const audio = document.getElementById("bgMusic");
+        audio.volume = 0.10;
+
+        // Create an audio context (starts "suspended" until a user gesture resumes it)
+        const ctx = new AudioContext();
+
+        // Create an audio source
+        const audioSource = ctx.createMediaElementSource(audio);
+
+        // Create an audio analyzer
+        const analayzer = ctx.createAnalyser();
+
+        // Connect the source, to the analyzer, and then back to the context's destination
+        audioSource.connect(analayzer);
+        audioSource.connect(ctx.destination);
+
+        const frequencyData = new Uint8Array(analayzer.frequencyBinCount);
+
+        // Get the visualizer container
+        const visualizerContainer = document.querySelector(".visualizer-container");
+
+        // Create a set of pre-defined bars
+        const bars = [];
+        for (let i = 0; i < NBR_OF_BARS; i++) {
+
+            const bar = document.createElement("DIV");
+            bar.setAttribute("id", "bar" + i);
+            bar.setAttribute("class", "visualizer-container__bar");
+            visualizerContainer.appendChild(bar);
+            bars.push(bar);
+
+        }
+
+        // This function has the task to adjust the bar heights according to the frequency data
+        function renderFrame() {
+
+            analayzer.getByteFrequencyData(frequencyData);
+
+            // Spread the bars across a useful chunk of the spectrum (skip the
+            // very low bins, which tend to dominate and make bars look the same)
+            const usableRange = Math.floor(frequencyData.length * 0.5);
+            const startOffset = 10;
+
+            for (let i = 0; i < NBR_OF_BARS; i++) {
+
+                const index = startOffset + Math.floor((i / NBR_OF_BARS) * usableRange);
+                const fd = frequencyData[index];
+
+                const barHeight = Math.max(4, fd || 0);
+                bars[i].style.height = barHeight + "px";
+
+            }
+
+            window.requestAnimationFrame(renderFrame);
+
+        }
+
+        renderFrame();
+
+        // The AudioContext must be resumed after a user gesture, or the audio
+        // element will show as "playing" while producing no sound and the
+        // visualizer will sit frozen. Resume it whenever playback starts,
+        // from either the native controls or any click on the page.
+        function unlockAudio() {
+            if (ctx.state === "suspended") {
+                ctx.resume();
+            }
+        }
+
+        audio.addEventListener("play", unlockAudio);
+        document.addEventListener("click", unlockAudio);
+
+    })();
+
 
 </script>
 </html>
