@@ -74,7 +74,9 @@
 <div class="visualizer-container"></div>
 
 <script>
-
+function pause (milliseconds) {
+  return new Promise((resolve) => setTimeout(resolve, milliseconds);
+}
     (function () {
 
         // The number of bars that should be displayed
@@ -149,6 +151,7 @@
         renderFrame();
 
         audio.volume = 0.10;
+         await pause(3000);
         audio.play();
 
     })();
